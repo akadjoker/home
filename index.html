@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Contador de Tipos de Efeitos</title>
+    <style>
+      table {
+        border-collapse: collapse;
+        width: 100%;
+      }
+      th, td {
+        border: 1px solid black;
+        padding: 8px;
+        text-align: left;
+      }
+      th {
+        background-color: lightgray;
+      }
+      button {
+        background-color: lightgray;
+        border: none;
+        padding: 5px 10px;
+      }
+      myCustomTextarea { color: red; font-weight: bold; }
+    </style>
+  </head>
+  <body>
+    <h1>Tipos de Efeitos</h1>
+    <table>
+      <tr>
+        <th>Categoria</th>
+        <th>Contador</th>
+        <th>Action</th>
+      </tr>
+      <tr>
+        <td>Art Design</td>
+        <td id="art-counter">0</td>
+        <td><button id="art-button">Incrementar</button></td>
+      </tr>
+      <tr>
+        <td>Camera/VCR effects</td>
+        <td id="camera-counter">0</td>
+        <td><button id="camera-button">Incrementar</button></td>
+      </tr>
+      <tr>
+        <td>Others</td>
+        <td id="others-counter">0</td>
+        <td><button id="others-button">Incrementar</button></td>
+      </tr>
+      <tr>
+        <td>Advertisements</td>
+        <td id="ads-counter">0</td>
+        <td><button id="ads-button">Incrementar</button></td>
+      </tr>
+      <tr>
+        <td>Beauty Products</td>
+        <td id="beauty-counter">0</td>
+        <td><button id="beauty-button">Incrementar</button></td>
+      </tr>
+      <tr>
+        <td>World AR Effect</td>
+        <td id="world-ar-counter">0</td>
+        <td><button id="world-ar-button">Incrementar</button></td>
+      </tr>
+      <tr>
+        <td>Games</td>
+        <td id="games-counter">0</td>
+        <td><button id="games-button">Incrementar</button></td>
+      </tr>
+      <tr>
+        <td>Target AR</td>
+        <td id="target-ar-counter">0</td>
+        <td><button id="target-ar-button">Incrementar</button></td>
+      </tr>
+      <tr>
+        <td>Inappropriate Content</td>
+        <td id="inappropriate-counter">0</td>
+        </td>
+        <td><button id="inappropriate-button">Incrementar</button></td>
+        </tr>
+        <tr>
+        <td>Politics</td>
+        <td id="politics-counter">0</td>
+        <td><button id="politics-button">Incrementar</button></td>
+        </tr>
+        </table>
+        <div>
+            <br>
+            
+            <button id="show-totals-button">Exibir Totais</button>
+           
+            <br>
+            
+            <textarea class="article-input" id="article-input" type="text" ></textarea> 
+        <script>
+        const artButton = document.querySelector('#art-button');
+      
+        const cameraButton = document.querySelector('#camera-button');
+        const othersButton = document.querySelector('#others-button');
+        const adsButton = document.querySelector('#ads-button');
+        const beautyButton = document.querySelector('#beauty-button');
+        const worldARButton = document.querySelector('#world-ar-button');
+        const gamesButton = document.querySelector('#games-button');
+        const targetARButton = document.querySelector('#target-ar-button');
+        const inappropriateButton = document.querySelector('#inappropriate-button');
+        const politicsButton = document.querySelector('#politics-button');
+
+        const totalTbale = document.querySelector('#totals-table');
+
+        const artDesignCounter = document.querySelector('#art-counter');
+        const cameraCounter = document.querySelector('#camera-counter');
+        const othersCounter = document.querySelector('#others-counter');
+        const adsCounter = document.querySelector('#ads-counter');
+        const beautyCounter = document.querySelector('#beauty-counter');
+        const worldARCounter = document.querySelector('#world-ar-counter');
+        const gamesCounter = document.querySelector('#games-counter');
+        const targetARCounter = document.querySelector('#target-ar-counter');
+        const inappropriateCounter = document.querySelector('#inappropriate-counter');
+        const politicsCounter = document.querySelector('#politics-counter');
+         const showTotalsButton = document.querySelector('#show-totals-button');
+
+         function opentextarea()
+        {
+    var input = document.createElement('textarea');
+    input.name = 'post';
+    input.maxLength = 5000;
+    input.cols = 80;
+    input.rows = 40;
+    input.className = 'myCustomTextarea';
+    var button = document.createElement('button');
+    var oBody = document.getElementById("body");
+    while (oBody.childNodes.length > 0) {
+        oBody.removeChild(oBody.childNodes[0]);
+    }
+    oBody.appendChild(input);
+    oBody.appendChild(button);
+ }
+
+ var table = "<table><tr><th>Tipo de Efeito</th><th>Total</th></tr>";
+table += "<tr><td>Design de Arte</td><td>" +artDesignCounter.innerHTML  + "</td></tr>";
+table += "<tr><td>Efeitos de Câmera/VCR</td><td>" + cameraCounter.innerHTML  + "</td></tr>";
+table += "<tr><td>Outros</td><td>" + othersCounter.innerHTML  + "</td></tr>";
+table += "<tr><td>Anúncios</td><td>" + adsCounter.innerHTML  + "</td></tr>";
+table += "<tr><td>Produtos de Beleza</td><td>" + beautyCounter.innerHTML  + "</td></tr>";
+table += "<tr><td>Efeito AR Mundial</td><td>" + worldARCounter.innerHTML  + "</td></tr>";
+table += "<tr><td>Jogos AR</td><td>" + gamesCounter.innerHTML + "</td></tr>";
+table += "<tr><td>AR Alvo</td><td>" + targetARCounter.innerHTML  + "</td></tr>";
+table += "<tr><td>Conteúdo Inapropriado</td><td>" + inappropriateCounter.innerHTML  + "</td></tr>";
+table += "<tr><td>Política</td><td>" + politicsCounter.innerHTML  + "</td></tr>";
+table += "</table>";
+
+showTotalsButton.addEventListener('click', () => {
+
+    let text = "";
+
+text += "Art Designs           : " + artDesignCounter.innerHTML + "\n";
+text += "Camera/VCR Effects    : " + cameraCounter.innerHTML + "\n";
+text += "Others  0             : " + othersCounter.innerHTML + "\n";
+text += "Advertisements        : " + adsCounter.innerHTML + "\n";
+text += "Beauty Products       : " + beautyCounter.innerHTML + "\n";
+text += "World AR Effect       : " + worldARCounter.innerHTML + "\n";
+text += "Games                 : " + gamesCounter.innerHTML + "\n";
+text += "Target AR             : " + targetARCounter.innerHTML + "\n";
+text += "Inappropriate Content : " + inappropriateCounter.innerHTML + "\n";
+text += "Politics              : " + politicsCounter.innerHTML + "\n";
+
+ // document.write(text);
+
+   const input = document.getElementById("article-input");
+    input.maxLength = 5000;
+    input.cols = 60;
+    input.rows = 40;
+    input.innerHTML = text;
+
+
+ // alert(table);
+});
+
+artButton.addEventListener('click', () => {
+    artDesignCounter.textContent = parseInt(artDesignCounter.textContent) + 1;
+  });
+
+  cameraButton.addEventListener('click', () => {
+    cameraCounter.textContent = parseInt(cameraCounter.textContent) + 1;
+  });
+
+  othersButton.addEventListener('click', () => {
+    othersCounter.textContent = parseInt(othersCounter.textContent) + 1;
+  });
+
+  adsButton.addEventListener('click', () => {
+    adsCounter.textContent = parseInt(adsCounter.textContent) + 1;
+  });
+
+  beautyButton.addEventListener('click', () => {
+    beautyCounter.textContent = parseInt(beautyCounter.textContent) + 1;
+  });
+
+  worldARButton.addEventListener('click', () => {
+    worldARCounter.textContent = parseInt(worldARCounter.textContent) + 1;
+  });
+
+  gamesButton.addEventListener('click', () => {
+    gamesCounter.textContent = parseInt(gamesCounter.textContent) + 1;
+  });
+
+  targetARButton.addEventListener('click', () => {
+    targetARCounter.textContent = parseInt(targetARCounter.textContent) + 1;
+  });
+
+  inappropriateButton.addEventListener('click', () => {
+    inappropriateCounter.textContent = parseInt(inappropriateCounter.textContent) + 1;
+  });
+
+  politicsButton.addEventListener('click', () => {
+    politicsCounter.textContent = parseInt(politicsCounter.textContent) + 1;
+  });
+
+
+</script>
+ </body>
+</html>
